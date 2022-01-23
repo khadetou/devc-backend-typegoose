@@ -3,6 +3,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
 import { TypegooseModule } from 'nestjs-typegoose';
+import { ProfileModule } from './profile/profile.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,6 +19,7 @@ import { TypegooseModule } from 'nestjs-typegoose';
       }),
     }),
     AuthModule,
+    ProfileModule,
   ],
 })
 export class AppModule {}
