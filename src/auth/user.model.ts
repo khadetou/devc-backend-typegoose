@@ -1,5 +1,4 @@
 import { prop } from '@typegoose/typegoose';
-
 import { IsString, Matches, IsEmail } from 'class-validator';
 
 export class User {
@@ -18,8 +17,4 @@ export class User {
   password: string;
   @prop()
   date: Date;
-  @prop()
-  createdAt: Date;
-  @prop()
-  updatedAt: Date;
 }
