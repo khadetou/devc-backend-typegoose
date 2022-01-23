@@ -1,5 +1,5 @@
 import { JwtPayload } from './../../node_modules/@nestjs/jwt/node_modules/@types/jsonwebtoken/index.d';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, LoginUserDto } from './dto/create-user.dto';
 import {
   ConflictException,
   Injectable,
@@ -54,8 +54,8 @@ export class AuthService {
   }
 
   //Login - SignIn -Authenticate user
-  async signIn(createUserDto: CreateUserDto): Promise<{ accessToken: string }> {
-    const { email, password } = createUserDto;
+  async signIn(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
+    const { email, password } = loginUserDto;
     const user = await this.userModel.findOne({ email });
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload: JwtPayload = { email };
